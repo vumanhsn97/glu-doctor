@@ -8,43 +8,96 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import { createAppContainer, createMaterialTopTabNavigator, createStackNavigator } from 'react-navigation';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import HomeScreen from './screens/HomeScreen';
+import PatientScreen from './screens/PatientScreen';
+import MessScreen from './screens/MessScreen';
+import NotifyScreen from './screens/NotifyScreen';
+import ProfileScreen from './screens/ProfileScreen';
 
-type Props = {};
-export default class App extends Component<Props> {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+const HomeStack = createStackNavigator({
+  HomeScreen: {
+    screen: HomeScreen,
+    navigationOptions: () => ({
+     header: null,
+    }),
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  PatientScreen:  {
+    screen: PatientScreen,
+    navigationOptions: () => ({
+     header: null,
+    }),
   },
 });
+
+const MessStack = createStackNavigator({
+  MessScreen: {
+    screen: MessScreen,
+    navigationOptions: () => ({
+     header: null,
+    }),
+  },
+});
+
+const NotifyStack = createStackNavigator({
+  NotifyScreen:  {
+    screen: NotifyScreen,
+    navigationOptions: () => ({
+     header: null,
+    }),
+  },
+});
+
+const ProfileStack = createStackNavigator({
+  ProfileScreen:  {
+    screen: ProfileScreen,
+    navigationOptions: () => ({
+     header: null,
+    }),
+  },
+});
+
+const TabNavigator = createMaterialTopTabNavigator({
+  HomeStack: HomeStack,
+  MessStack: MessStack,
+  NotifyStack: NotifyStack,
+  ProfileStack: ProfileStack
+},
+{
+  defaultNavigationOptions: ({ navigation }) => ({
+    tabBarIcon: ({ focused, tintColor}) => {
+      let iconName;
+      const { routeName } = navigation.state;
+      if (routeName === 'HomeStack') {
+        iconName='address-book';
+      } else if (routeName === 'MessStack') {
+        iconName = 'comments';
+      } else if (routeName === 'NotifyStack') {
+        iconName = 'bell';
+      } else if (routeName === 'ProfileStack') {
+        iconName = 'user';
+      }
+      return <Icon size={20} color={tintColor} name={iconName} />;
+    }, 
+    swipeEnabled: true,
+    tabBarPosition: 'bottom',
+    tabBarOptions: {
+      activeTintColor: '#EF4444',
+      inactiveTintColor: 'silver',
+      indicatorStyle: {
+        opacity: 0
+      },
+      style: {
+        backgroundColor: 'white',
+        borderTopColor: '#EFEFEF',
+        borderTopWidth: 1,
+      },
+      showLabel: false,
+      showIcon: true,
+    },
+  })
+});
+
+export default createAppContainer(TabNavigator);
