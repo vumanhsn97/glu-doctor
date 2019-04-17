@@ -24,12 +24,7 @@ const HomeStack = createStackNavigator({
      header: null,
     }),
   },
-  PatientScreen:  {
-    screen: PatientScreen,
-    navigationOptions: () => ({
-     header: null,
-    }),
-  },
+  
 });
 
 const MessStack = createStackNavigator({
@@ -80,7 +75,8 @@ const TabNavigator = createMaterialTopTabNavigator({
         iconName = 'user';
       }
       return <Icon size={20} color={tintColor} name={iconName} />;
-    }, 
+    },
+    title: 'hheaea',
     swipeEnabled: true,
     tabBarPosition: 'bottom',
     tabBarOptions: {
@@ -100,4 +96,19 @@ const TabNavigator = createMaterialTopTabNavigator({
   })
 });
 
-export default createAppContainer(TabNavigator);
+const TabScreen = createStackNavigator({
+  TabNavigator:  {
+    screen: TabNavigator,
+    navigationOptions: () => ({
+     title: 'Glucare',
+    }),
+  },
+  PatientScreen:  {
+    screen: PatientScreen,
+    navigationOptions: () => ({
+     header: null,
+    }),
+  },
+});
+
+export default createAppContainer(TabScreen);
