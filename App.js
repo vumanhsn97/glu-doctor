@@ -100,13 +100,13 @@ const TabScreen = createStackNavigator({
   TabNavigator:  {
     screen: TabNavigator,
     navigationOptions: () => ({
-     title: 'Glucare',
+     header: null
     }),
   },
   PatientScreen:  {
     screen: PatientScreen,
     navigationOptions: () => ({
-     header: null,
+     header: null
     }),
   },
 });
