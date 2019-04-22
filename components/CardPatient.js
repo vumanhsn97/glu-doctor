@@ -5,8 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 export default class CardPatient extends Component {
 
     render() {
-        const icon_color = 'black';
-        const back_color = (this.props.level === 1) ? '#88C6ED' : ((this.props.level === 2) ? '#FFF000' : '#EF4444');
+        const back_color = 'white';
         return (
             <TouchableOpacity style={style.border} onPress={() => this.props.navigation.navigate('PatientScreen')}>
                 <View style={{
@@ -26,19 +25,18 @@ export default class CardPatient extends Component {
                     <View>
                         <Text style={style.name}>{this.props.name}</Text>
                         <View style={{ flexDirection: 'row', marginTop: 7 }}>
-                            <Icon name='file-signature' size={14} color={icon_color} />
+                            <Icon name='file-signature' size={14} color='#0000FF' />
                             <Text style={style.label}>Loại: {this.props.type}</Text>
                         </View>
                     </View>
                     <View style={style.right}>
                         <View style={{ flexDirection: 'column' }}>
-                            <View style={{ flexDirection: 'row', marginTop: 12 }}>
-                                <Icon name='transgender' size={14} color={icon_color} />
-                                <Text style={style.label}>Giới tính: {this.props.gender}</Text>
+                            <View style={{ flexDirection: 'row', paddingRight: 2, marginTop: 12, justifyContent: 'flex-end' }}>
+                                {this.props.noti && <Icon name='exclamation-circle' size={16} color='red' />}
+                                {!this.props.noti && <Text></Text>}
                             </View>
                             <View style={{ flexDirection: 'row', marginTop: 10 }}>
-                                <Icon name='birthday-cake' size={14} color={icon_color} />
-                                <Text style={style.label}>Tuổi: {this.props.old}</Text>
+                                <Text style={style.label}> {this.props.date} </Text>
                             </View>
                         </View>
                     </View>

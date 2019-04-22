@@ -1,124 +1,116 @@
 import React, { Component } from 'react';
-import { View, ScrollView, Text, FlatList, ListView } from 'react-native';
+import { View, ScrollView, Text, FlatList, ListView, TextInput } from 'react-native';
 import CardPatient from '../components/CardPatient';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 export default class HomeScreen extends Component {
 
     render() {
         return (
             <View style={{ flex: 1 }}>
-                <View style={{ margin: 3, marginBottom: 10, borderBottomColor: '#EFEFEF', borderBottomWidth: 1 }}>
-                    <Text style={{ color: 'black', fontSize: 16 }}> Tình trạng bệnh nhân </Text>
-                    <View style={{ flexDirection: 'row', padding: 5 }}>
-                        <View style={{ width: 12, height: 12, backgroundColor: '#88C6ED', margin: 3 }}></View>
-                        <Text>Yếu</Text>
-                        <View style={{ width: 12, height: 12, backgroundColor: '#FFF000', margin: 3, marginLeft: 20 }}></View>
-                        <Text>Trung bình</Text>
-                        <View style={{ width: 12, height: 12, backgroundColor: '#EF4444', margin: 3, marginLeft: 20 }}></View>
-                        <Text>Cao</Text>
+                <View style={{ flexDirection: 'row', marginBottom: 10, height: 60, borderBottomColor: '#EFEFEF', backgroundColor: '#5858FA', alignItems: 'center' }}>
+                    <View style={{ flexDirection: 'row', backgroundColor: 'white', flex: 1, borderRadius: 15, marginLeft: 5, marginRight: 5 }}>
+                        <View style={{justifyContent: 'center', paddingLeft: 10, paddingRight: 5}}>
+                            <Icon name='search' size={20} color='gray' />
+                        </View>
+                        <TextInput
+                            style={{ flex: 1, padding: 5, }}
+                            placeholder=''
+                        />
+                    </View>
+                    <View style={{ paddingLeft: 10, paddingRight: 10}}>
+                     <Icon name='user-plus' size={20} color='white' />   
                     </View>
                 </View>
                 <FlatList
                     data={[
                         {
                             key: '1',
-                            level: 3,
+                            noti: true,
                             name: 'Vũ Văn Mạnh',
                             type: 'Tiểu đường',
-                            gender: 'Nam',
-                            old: '21',
+                            date: '01/02/2018'
                         },
                         {
                             key: '2',
-                            level: 3,
+                            noti: true,
                             name: 'Vũ Văn Mạnh',
                             type: 'Tiểu đường',
-                            gender: 'Nam',
-                            old: '21',
+                            date: '01/02/2018'
                         },
                         {
                             key: '3',
-                            level: 3,
+                            noti: true,
                             name: 'Vũ Văn Mạnh',
                             type: 'Tiểu đường',
-                            gender: 'Nam',
-                            old: '21',
+                            date: '01/02/2018'
                         },
                         {
                             key: '4',
-                            level: 3,
+                            noti: false,
                             name: 'Vũ Văn Mạnh',
                             type: 'Tiểu đường',
-                            gender: 'Nam',
-                            old: '21',
+                            date: '01/02/2018'
                         },
                         {
                             key: '5',
-                            level: 2,
+                            noti: false,
                             name: 'Vũ Văn Mạnh',
                             type: 'Tiểu đường',
-                            gender: 'Nam',
-                            old: '21',
+                            date: '01/02/2018'
                         },
                         {
                             key: '6',
-                            level: 2,
+                            noti: false,
                             name: 'Vũ Văn Mạnh',
                             type: 'Tiểu đường',
-                            gender: 'Nam',
-                            old: '21',
+                            date: '01/02/2018'
                         },
                         {
                             key: '7',
-                            level: 2,
+                            noti: false,
                             name: 'Vũ Văn Mạnh',
                             type: 'Tiểu đường',
-                            gender: 'Nam',
-                            old: '21',
+                            date: '01/02/2018'
                         },
                         {
                             key: '8',
-                            level: 1,
+                            noti: false,
                             name: 'Vũ Văn Mạnh',
                             type: 'Tiểu đường',
-                            gender: 'Nam',
-                            old: '21',
+                            date: '01/02/2018'
                         },
                         {
                             key: '9',
-                            level: 1,
+                            noti: false,
                             name: 'Vũ Văn Mạnh',
                             type: 'Tiểu đường',
-                            gender: 'Nam',
-                            old: '21',
+                            date: '01/02/2018'
                         },
                         {
                             key: '10',
-                            level: 1,
+                            noti: false,
                             name: 'Vũ Văn Mạnh',
                             type: 'Tiểu đường',
-                            gender: 'Nam',
-                            old: '21',
+                            date: '01/02/2018'
                         },
                         {
                             key: '11',
-                            level: 1,
+                            noti: false,
                             name: 'Vũ Văn Mạnh',
                             type: 'Tiểu đường',
-                            gender: 'Nam',
-                            old: '21',
+                            date: '01/02/2018'
                         },
 
                     ]}
                     renderItem={({ item }) => <CardPatient
-                        level={item.level}
+                        noti={item.noti}
                         name={item.name}
                         type={item.type}
-                        gender={item.gender}
-                        old={item.old}
+                        date={item.date}
                         navigation={this.props.navigation}
                     />}
-                    
+
                 />
             </View>
         );

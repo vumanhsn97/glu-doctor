@@ -80,13 +80,13 @@ const TabNavigator = createMaterialTopTabNavigator({
     swipeEnabled: true,
     tabBarPosition: 'bottom',
     tabBarOptions: {
-      activeTintColor: '#EF4444',
+      activeTintColor: 'white',
       inactiveTintColor: 'silver',
       indicatorStyle: {
         opacity: 0
       },
       style: {
-        backgroundColor: 'white',
+        backgroundColor: '#5858FA',
         borderTopColor: '#EFEFEF',
         borderTopWidth: 1,
       },
