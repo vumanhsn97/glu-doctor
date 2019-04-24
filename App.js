@@ -8,7 +8,7 @@
  */
 
 import React, {Component} from 'react';
-import { createAppContainer, createMaterialTopTabNavigator, createStackNavigator } from 'react-navigation';
+import { createAppContainer, createMaterialTopTabNavigator, createStackNavigator, BottomTabBar } from 'react-navigation';
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import HomeScreen from './screens/HomeScreen';
@@ -106,7 +106,9 @@ const TabScreen = createStackNavigator({
   PatientScreen:  {
     screen: PatientScreen,
     navigationOptions: () => ({
-     header: null
+      headerStyle: {
+        backgroundColor: '#5858FA',
+      },
     }),
   },
 });

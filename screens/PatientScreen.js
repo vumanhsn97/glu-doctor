@@ -1,20 +1,28 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Button, ScrollView } from 'react-native';
 import CardParam from '../components/CardParam';
+import ButtonIcon from '../components/ButtonIcon';
+import EatTable from '../components/EatTable';
 
 export default class HomeScreen extends Component {
     render() {
         return (
-            <View>
-                <View style={{ justifyContent: 'center', flexDirection: 'column', height: 80, marginBottom: 10, backgroundColor: 'blue' }}>
-                    <View style={{ flexDirection: 'row' }}>
-                        <View style={{ width: 60, height: 60, borderRadius: 60 / 2, backgroundColor: 'black', justifyContent: 'space-between', margin: 5 }}>
+            <ScrollView>
+                <View style={{ justifyContent: 'center', flexDirection: 'column', height: 100, marginBottom: 10 }}>
+                    <View style={{ flexDirection: 'row', paddingTop: 10, paddingBottom: 10 }}>
+                        <View style={{ width: 80, height: 80, borderRadius: 80 / 2, backgroundColor: 'black', justifyContent: 'space-between', margin: 5 }}>
 
                         </View>
-                        <View style={{justifyContent: 'center'}}>
-                            <Text>Vũ Văn Mạnh</Text>
-                            <Text>22 Tuổi</Text>
+                        <View style={{ justifyContent: 'center', flex: 1 }}>
+                            <Text style={{ fontSize: 20 }}>Vũ Văn Mạnh</Text>
+                            <Text style={{ marginTop: 10 }}>22 Tuổi</Text>
                             <Text>Hồ Chí Minh</Text>
+                        </View>
+                        <View style={{ justifyContent: 'center', marginRight: 10 }}>
+                            <Button
+                                title="Chi tiết"
+                                color="#5858FA"
+                            />
                         </View>
                     </View>
                 </View>
@@ -72,7 +80,38 @@ export default class HomeScreen extends Component {
                         />
                     </View>
                 </View>
-            </View>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 5, marginTop: 10 }}>
+                    <View style={{ width: '49%' }}>
+                        <ButtonIcon
+                            icon='comments'
+                            label='Nhắn tin'
+                        />
+                    </View>
+                    <View style={{ width: '49%' }}>
+                        <ButtonIcon
+                            icon='capsules'
+                            label='Cấp thuốc'
+                        />
+                    </View>
+                </View>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 5 }}>
+                    <View style={{ width: '49%' }}>
+                        <ButtonIcon
+                            icon='phone-square'
+                            label='Gọi điện'
+                        />
+                    </View>
+                    <View style={{ width: '49%' }}>
+                        <ButtonIcon
+                            icon='user-times'
+                            label='Bỏ theo dõi'
+                        />
+                    </View>
+                </View>
+                <View style={{ marginTop: 10 }}>
+                    <EatTable />
+                </View>
+            </ScrollView>
         );
     }
 }
