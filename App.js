@@ -16,6 +16,7 @@ import PatientScreen from './screens/PatientScreen';
 import MessScreen from './screens/MessScreen';
 import NotifyScreen from './screens/NotifyScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import MedicineScreen from './screens/MedicineScreen';
 
 const HomeStack = createStackNavigator({
   HomeScreen: {
@@ -105,6 +106,14 @@ const TabScreen = createStackNavigator({
   },
   PatientScreen:  {
     screen: PatientScreen,
+    navigationOptions: () => ({
+      headerStyle: {
+        backgroundColor: '#5858FA',
+      },
+    }),
+  },
+  MedicineScreen:  {
+    screen: MedicineScreen,
     navigationOptions: () => ({
       headerStyle: {
         backgroundColor: '#5858FA',

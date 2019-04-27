@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 export default class CardPatient extends Component {
 
     render() {
-        const back_color = 'white';
+        const back_color = this.props.highlight ? '#EFEFEF' : 'white'; 
         return (
             <TouchableOpacity style={style.border} onPress={() => this.props.navigation.navigate('PatientScreen')}>
                 <View style={{
@@ -25,8 +25,7 @@ export default class CardPatient extends Component {
                     <View>
                         <Text style={style.name}>{this.props.name}</Text>
                         <View style={{ flexDirection: 'row', marginTop: 7 }}>
-                            <Icon name='file-signature' size={14} color='#0000FF' />
-                            <Text style={style.label}>Loại: {this.props.type}</Text>
+                            <Text style={style.label}>{this.props.type}</Text>
                         </View>
                     </View>
                     <View style={style.right}>
@@ -63,11 +62,13 @@ const style = StyleSheet.create({
     name: {
         fontSize: 20,
         marginTop: 5,
+        color: 'black',
         fontFamily: 'Arial'
     },
     label: {
         fontSize: 13,
         marginLeft: 2,
+        color: 'black',
         fontFamily: 'Arial'
     },
 });

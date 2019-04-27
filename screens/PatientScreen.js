@@ -85,12 +85,16 @@ export default class HomeScreen extends Component {
                         <ButtonIcon
                             icon='comments'
                             label='Nhắn tin'
+                            screen='MedicineScreen'
+                            navigation={this.props.navigation}
                         />
                     </View>
                     <View style={{ width: '49%' }}>
                         <ButtonIcon
                             icon='capsules'
                             label='Cấp thuốc'
+                            screen='MedicineScreen'
+                            navigation={this.props.navigation}
                         />
                     </View>
                 </View>
@@ -99,12 +103,16 @@ export default class HomeScreen extends Component {
                         <ButtonIcon
                             icon='phone-square'
                             label='Gọi điện'
+                            screen='MedicineScreen'
+                            navigation={this.props.navigation}
                         />
                     </View>
                     <View style={{ width: '49%' }}>
                         <ButtonIcon
                             icon='user-times'
                             label='Bỏ theo dõi'
+                            screen='MedicineScreen'
+                            navigation={this.props.navigation}
                         />
                     </View>
                 </View>
