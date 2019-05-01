@@ -11,12 +11,9 @@ export default class CardParam extends Component {
                 </View>
                 <View style={{ flexDirection: 'row', flex: 1, justifyContent: 'flex-start' }}>
                     <View style={{ flexDirection: 'column', justifyContent: 'center', paddingLeft: 10 }}>
-                        <Text style={{ fontSize: 18 }}>{this.props.value}</Text>
-                        <Text>{this.props.title}</Text>
+                        <Text style={{ fontSize: 18, color: 'black' }}>{this.props.value}</Text>
+                        <Text style={{ color: 'black' }}>{this.props.title}</Text>
                     </View>
-                </View>
-                <View style={{ flexDirection: 'column', justifyContent: 'center', paddingRight: 7 }}>
-                    {(this.props.noti === true) && <Icon name='exclamation' size={15} color='red' />}
                 </View>
             </View>
         );

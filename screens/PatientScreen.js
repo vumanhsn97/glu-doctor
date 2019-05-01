@@ -3,8 +3,31 @@ import { View, Text, Button, ScrollView } from 'react-native';
 import CardParam from '../components/CardParam';
 import ButtonIcon from '../components/ButtonIcon';
 import EatTable from '../components/EatTable';
+import MedicineTable from '../components/MedicineTable';
 
 export default class HomeScreen extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            medicines: [{
+                name: 'Medicine 1',
+                value: '2 times/day',
+                use: 'Sử dụng như vầy',
+            }, 
+            {
+                name: 'Medicine 1',
+                value: '2 times/day',
+                use: 'Sử dụng như vầy',
+            }, 
+            {
+                name: 'Medicine 1',
+                value: '2 times/day',
+                use: 'Sử dụng như vầy',
+            }]
+        }
+    }
+
     render() {
         return (
             <ScrollView>
@@ -18,16 +41,10 @@ export default class HomeScreen extends Component {
                             <Text style={{ marginTop: 10 }}>22 Tuổi</Text>
                             <Text>Hồ Chí Minh</Text>
                         </View>
-                        <View style={{ justifyContent: 'center', marginRight: 10 }}>
-                            <Button
-                                title="Chi tiết"
-                                color="#5858FA"
-                            />
-                        </View>
                     </View>
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 5 }}>
-                    <View style={{ width: '49%', borderBottomRightRadius: 5, borderRightWidth: 1, borderBottomWidth: 1, borderColor: 'blue' }}>
+                    <View style={{ width: '49%' }}>
                         <CardParam
                             noti={true}
                             title='Đường huyết'
@@ -35,7 +52,7 @@ export default class HomeScreen extends Component {
                             icon='tint'
                         />
                     </View>
-                    <View style={{ width: '49%', borderBottomLeftRadius: 5, borderBottomWidth: 1, borderLeftWidth: 1, borderColor: 'blue' }}>
+                    <View style={{ width: '49%' }}>
                         <CardParam
                             noti={true}
                             title='Huyết áp'
@@ -45,7 +62,7 @@ export default class HomeScreen extends Component {
                     </View>
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 5 }}>
-                    <View style={{ width: '49%', borderRadius: 5, borderRightWidth: 1, borderTopWidth: 1, borderBottomWidth: 1, borderColor: 'blue' }}>
+                    <View style={{ width: '49%' }}>
                         <CardParam
                             noti={false}
                             title='HbA1c'
@@ -53,7 +70,7 @@ export default class HomeScreen extends Component {
                             icon='hiking'
                         />
                     </View>
-                    <View style={{ width: '49%', borderRadius: 5, borderTopWidth: 1, borderBottomWidth: 1, borderLeftWidth: 1, borderColor: 'blue' }}>
+                    <View style={{ width: '49%' }}>
                         <CardParam
                             noti={false}
                             title='Nhịp tim'
@@ -63,7 +80,7 @@ export default class HomeScreen extends Component {
                     </View>
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <View style={{ width: '49%', borderRadius: 5, borderRightWidth: 1, borderTopWidth: 1, borderBottomWidth: 1, borderColor: 'blue' }}>
+                    <View style={{ width: '48%' }}>
                         <CardParam
                             noti={false}
                             title='Chiều cao'
@@ -71,7 +88,7 @@ export default class HomeScreen extends Component {
                             icon='child'
                         />
                     </View>
-                    <View style={{ width: '49%', borderRadius: 5, borderTopWidth: 1, borderBottomWidth: 1, borderLeftWidth: 1, borderColor: 'blue' }}>
+                    <View style={{ width: '48%' }}>
                         <CardParam
                             noti={false}
                             title='Cân nặng'
@@ -117,6 +134,9 @@ export default class HomeScreen extends Component {
                     </View>
                 </View>
                 <View style={{ marginTop: 10 }}>
+                    <MedicineTable 
+                        medicines={this.state.medicines}
+                    />
                     <EatTable />
                 </View>
             </ScrollView>
