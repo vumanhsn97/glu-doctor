@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import MedicineCard from './MedicineCard';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 export default class MedicineTable extends Component {
 
@@ -17,7 +18,10 @@ export default class MedicineTable extends Component {
 
         return(
             <View style={{ padding: 10 }}>
-                <Text style={{ color: 'black'}}>Đơn thuốc</Text>
+                <View style={{ flexDirection: 'row', marginBottom: 5 }}>
+                    <Icon name='file-invoice' size={20} color='blue' />
+                    <Text style={{ color: 'blue', fontSize: 16, marginLeft: 10 }}>Đơn thuốc</Text>
+                </View>              
                 {listMedicines}
             </View>
         );

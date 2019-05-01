@@ -62,9 +62,6 @@ export default class MedicineScreen extends Component {
                     </View>
                 </Modal>
                 <View style={{ marginLeft: 10, marginRight: 10 }} >
-                    <Text>Bệnh nhân Vũ Văn Mạnh</Text>
-                    <Text>22 tuổi</Text>
-                    <Text style={{ marginBottom: 30}}>Tiểu đường</Text>
                     <Text style={{ width: '100%', borderRadius: 10, borderWidth: 1, borderColor: '#EFEFEF', padding: 10, marginBottom: 10, color: 'black' }}
                         onPress={() => { this.setModalVisible(!this.state.modalVisible) }}>
                         {this.state.medicine === '' ? 'Tên thuốc' : this.state.medicine}
@@ -92,11 +89,13 @@ export default class MedicineScreen extends Component {
                             <TextInput style={{ flex: 1, color: 'black' }} 
                                 onKeyPress={(use) => { this.setState({ use: use })}}
                                 textAlignVertical='top'
+                                placeholder='Cách dùng'
+                                placeholderTextColor='black'
                                 multiline={true}
                                 />
                         </View>
                     </View>
-                    <Text style={{ marginTop: 20}}>Các thành phần dị ứng</Text>
+                    <Text style={{ marginTop: 20 }}>Các thành phần dị ứng</Text>
                 </View>
             </View>
         );

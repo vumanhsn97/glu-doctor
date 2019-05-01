@@ -12,19 +12,29 @@ export default class HomeScreen extends Component {
         this.state = {
             medicines: [{
                 name: 'Medicine 1',
-                value: '2 times/day',
-                use: 'Sử dụng như vầy',
+                value: '12 viên',
+                use: 'Sử dụng 2 lần 1 ngày',
             }, 
             {
-                name: 'Medicine 1',
-                value: '2 times/day',
-                use: 'Sử dụng như vầy',
+                name: 'Medicine 2',
+                value: '18 viên',
+                use: 'Sử dụng 3 lần 1 ngày',
             }, 
             {
-                name: 'Medicine 1',
-                value: '2 times/day',
-                use: 'Sử dụng như vầy',
-            }]
+                name: 'Medicine 3',
+                value: '6 viên',
+                use: 'Sử dụng 1 lần 1 ngày',
+            }, 
+            {
+                name: 'Medicine 4',
+                value: '18 viên',
+                use: 'Sử dụng 3 lần 1 ngày',
+            },
+            {
+                name: 'Medicine 5',
+                value: '18 viên',
+                use: 'Sử dụng 3 lần 1 ngày',
+            }, ]
         }
     }
 
