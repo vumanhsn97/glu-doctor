@@ -8,8 +8,8 @@ export default class EatTable extends Component {
         return(
             <View style={{ padding: 5 }}>
                 <View style={{ flexDirection: 'row', marginBottom: 5, marginLeft: 5 }}>
-                    <Icon name='utensils' size={20} color='blue' />
-                    <Text style={{ fontSize: 16, color: 'blue', marginLeft: 10 }}>Chế độ ăn uống</Text>
+                    <Icon name='utensils' size={20} color= 'rgba(54, 175, 160, 1)' />
+                    <Text style={{ fontSize: 16, color: 'rgba(54, 175, 160, 1)', marginLeft: 10 }}>Chế độ ăn uống</Text>
                 </View>
                 <View style={{ borderRadius: 10, borderColor: '#EFEFEF', margin: 5, borderWidth: 1 }}>
                     <View style={{ flexDirection: 'row', padding: 10 }}>

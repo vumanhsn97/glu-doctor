@@ -30,7 +30,7 @@ export default class MedicineCard extends Component {
 
     render() {
         return (
-            <View style={{ backgroundColor: (this.props.num % 2 === 0) ? 'white' : '#A4A4A4', }}>
+            <View style={{ backgroundColor: (this.props.num % 2 === 0) ? 'white' : '#EFEFEF', }}>
                 <TouchableOpacity onPress={() => this.onHandleClick()}>
                     <View style={{
                         flexDirection: 'row',

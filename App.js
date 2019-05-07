@@ -81,13 +81,13 @@ const TabNavigator = createMaterialTopTabNavigator({
     swipeEnabled: true,
     tabBarPosition: 'bottom',
     tabBarOptions: {
-      activeTintColor: 'white',
-      inactiveTintColor: 'silver',
+      activeTintColor: 'rgba(54, 175, 160, 1)',
+      inactiveTintColor: 'rgba(54, 175, 160, 0.5)',
       indicatorStyle: {
         opacity: 0
       },
       style: {
-        backgroundColor: '#5858FA',
+        backgroundColor: 'white',
         borderTopColor: '#EFEFEF',
         borderTopWidth: 1,
       },
@@ -108,7 +108,7 @@ const TabScreen = createStackNavigator({
     screen: PatientScreen,
     navigationOptions: () => ({
       headerStyle: {
-        backgroundColor: '#5858FA',
+        backgroundColor: 'rgba(54, 175, 160, 1)',
       },
     }),
   },
@@ -116,7 +116,7 @@ const TabScreen = createStackNavigator({
     screen: MedicineScreen,
     navigationOptions: () => ({
       headerStyle: {
-        backgroundColor: '#5858FA',
+        backgroundColor: 'rgba(54, 175, 160, 1)',
       },
     }),
   },

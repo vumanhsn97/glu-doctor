@@ -8,7 +8,7 @@ export default class HomeScreen extends Component {
     render() {
         return (
             <View style={{ flex: 1 }}>
-                <View style={{ flexDirection: 'row', marginBottom: 10, height: 60, borderBottomColor: '#EFEFEF', backgroundColor: '#5858FA', alignItems: 'center' }}>
+                <View style={{ flexDirection: 'row', marginBottom: 10, height: 60, borderBottomColor: '#EFEFEF', backgroundColor: 'rgba(54, 175, 160, 1)', alignItems: 'center' }}>
                     <View style={{ flexDirection: 'row', backgroundColor: 'white', flex: 1, borderRadius: 15, marginLeft: 5, marginRight: 5 }}>
                         <View style={{ justifyContent: 'center', paddingLeft: 10, paddingRight: 5 }}>
                             <Icon name='search' size={20} color='gray' />

@@ -19,8 +19,12 @@ export default class MedicineTable extends Component {
         return(
             <View style={{ padding: 10 }}>
                 <View style={{ flexDirection: 'row', marginBottom: 5 }}>
-                    <Icon name='file-invoice' size={20} color='blue' />
-                    <Text style={{ color: 'blue', fontSize: 16, marginLeft: 10 }}>Đơn thuốc</Text>
+                    <Icon name='file-invoice' size={20} color='rgba(54, 175, 160, 1)' />
+                    <Text style={{ color: 'rgba(54, 175, 160, 1)', fontSize: 16, marginLeft: 10 }}>Đơn thuốc</Text>
+                </View>
+                <View style={{ flexDirection: 'row', backgroundColor: 'rgba(54, 175, 160, 1)' }}>
+                    <Text style={{ color: 'white', flex: 1, paddingLeft: 5 }}>Tên thuốc</Text>
+                    <Text style={{ color: 'white', width: 80 }}>Liều lượng</Text>
                 </View>              
                 {listMedicines}
             </View>

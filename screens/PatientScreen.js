@@ -47,9 +47,9 @@ export default class HomeScreen extends Component {
 
                         </View>
                         <View style={{ justifyContent: 'center', flex: 1 }}>
-                            <Text style={{ fontSize: 20 }}>Vũ Văn Mạnh</Text>
-                            <Text style={{ marginTop: 10 }}>22 Tuổi</Text>
-                            <Text>Hồ Chí Minh</Text>
+                            <Text style={{ fontSize: 20, color: 'black' }}>Vũ Văn Mạnh</Text>
+                            <Text style={{ marginTop: 10, color: 'black' }}>22 Tuổi</Text>
+                            <Text style={{ color: 'black' }}>Hồ Chí Minh</Text>
                         </View>
                     </View>
                 </View>
