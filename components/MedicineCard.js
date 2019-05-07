@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
+import Swipeout from 'react-native-swipeout';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 export default class MedicineCard extends Component {
     constructor(props) {
@@ -15,7 +17,7 @@ export default class MedicineCard extends Component {
 
     viewOpen = () => {
         return (
-            <View style={{ flexDirection: 'column', paddingRight: 20}}>
+            <View style={{ flexDirection: 'column', paddingRight: 20 }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
                     <TouchableOpacity style={{ marginRight: 50 }}>
                         <Text style={{ color: '#5858FA' }}>Xóa</Text>
@@ -29,22 +31,31 @@ export default class MedicineCard extends Component {
     }
 
     render() {
+        let swipeoutBtns = [
+            {
+              component: <View style={{ justifyContent: 'center', flexDirection: 'row', marginTop: 10 }}>
+                    <Icon name='trash-alt' size={25} color='white' />
+              </View>,
+              backgroundColor: 'rgba(54, 175, 160, 0.5)'
+            }
+          ]
         return (
-            <View style={{ backgroundColor: (this.props.num % 2 === 0) ? 'white' : '#EFEFEF', }}>
-                <TouchableOpacity onPress={() => this.onHandleClick()}>
-                    <View style={{
-                        flexDirection: 'row',
-                        padding: 5
-                    }}>
-                        <Text style={{ flex: 1, color: 'black' }}>{this.props.name}</Text>
-                        <Text style={{ width: 80, color: 'black' }}>{this.props.value}</Text>
-                    </View>
-                    { this.state.open && <Text style={{ color: 'black', padding: 5}}>
-                        Cách dùng:  {this.props.use}
-                    </Text>}
-                </TouchableOpacity>
-                {this.state.open && this.viewOpen()}
-            </View>
+            <Swipeout right={swipeoutBtns} disabled={!this.state.open}>
+                <View style={{ backgroundColor: (this.props.num % 2 === 0) ? 'white' : '#EFEFEF', }}>
+                    <TouchableOpacity onPress={() => this.onHandleClick()}>
+                        <View style={{
+                            flexDirection: 'row',
+                            padding: 5
+                        }}>
+                            <Text style={{ flex: 1, color: 'black' }}>{this.props.name}</Text>
+                            <Text style={{ width: 80, color: 'black' }}>{this.props.value}</Text>
+                        </View>
+                        {this.state.open && <Text style={{ color: 'black', padding: 5 }}>
+                            Cách dùng:  {this.props.use}
+                        </Text>}
+                    </TouchableOpacity>
+                </View>
+            </Swipeout>
         );
     }
 }

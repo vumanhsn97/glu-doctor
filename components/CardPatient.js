@@ -7,7 +7,7 @@ export default class CardPatient extends Component {
     render() {
         const back_color = this.props.highlight ? '#EFEFEF' : 'white'; 
         return (
-            <TouchableOpacity style={style.border} onPress={() => this.props.navigation.navigate('PatientScreen')}>
+            <TouchableOpacity style={style.border} onPress={() => this.props.navigation.navigate('PatientScreen', { patientId: this.props.key })}>
                 <View style={{
                     width: '94%',
                     margin: '3%',

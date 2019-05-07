@@ -4,6 +4,106 @@ import CardPatient from '../components/CardPatient';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 export default class HomeScreen extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            data: [
+                {
+                    key: '1',
+                    noti: true,
+                    highlight: true,
+                    name: 'Vũ Văn Mạnh',
+                    type: 'Tiểu đường',
+                },
+                {
+                    key: '2',
+                    noti: true,
+                    highlight: true,
+                    name: 'Vũ Văn Mạnh',
+                    type: 'Tiểu đường',
+                },
+                {
+                    key: '3',
+                    noti: true,
+                    highlight: true,
+                    name: 'Vũ Văn Mạnh',
+                    type: 'Tiểu đường',
+                },
+                {
+                    key: '4',
+                    noti: false,
+                    highlight: true,
+                    name: 'Vũ Văn Mạnh',
+                    type: 'Tiểu đường',
+                },
+                {
+                    key: '5',
+                    noti: false,
+                    highlight: true,
+                    name: 'Vũ Văn Mạnh',
+                    type: 'Tiểu đường',
+                },
+                {
+                    key: '6',
+                    noti: false,
+                    highlight: false,
+                    name: 'Vũ Văn Mạnh',
+                    type: 'Tiểu đường',
+                },
+                {
+                    key: '7',
+                    noti: false,
+                    highlight: false,
+                    name: 'Vũ Văn Mạnh',
+                    type: 'Tiểu đường',
+                },
+                {
+                    key: '8',
+                    noti: false,
+                    highlight: false,
+                    name: 'Vũ Văn Mạnh',
+                    type: 'Tiểu đường',
+                },
+                {
+                    key: '9',
+                    noti: false,
+                    highlight: false,
+                    name: 'Vũ Văn Mạnh',
+                    type: 'Tiểu đường',
+                },
+                {
+                    key: '10',
+                    noti: false,
+                    highlight: false,
+                    name: 'Vũ Văn Mạnh',
+                    type: 'Tiểu đường',
+                },
+                {
+                    key: '11',
+                    noti: false,
+                    highlight: false,
+                    name: 'Vũ Văn Mạnh',
+                    type: 'Tiểu đường',
+                },],
+                patients: [],
+        }
+    }
+
+    componentWillMount() {
+        this.setState({patients: [...this.state.data]})
+    }
+
+    searchPatient = (text) => {
+        let list = [...this.state.data];
+        for(let i = 0; i < list.length; i++) {
+            if(list[i].name.indexOf(text) === -1) {
+                list.splice(i, 1);
+                i = i - 1;
+            }
+        }
+        this.setState({ patients: list});
+    }
 
     render() {
         return (
@@ -16,6 +116,7 @@ export default class HomeScreen extends Component {
                         <TextInput
                             style={{ flex: 1, padding: 5, }}
                             placeholder=''
+                            onChangeText={ (text) => this.searchPatient(text)}
                         />
                     </View>
                     <TouchableOpacity>
@@ -25,86 +126,7 @@ export default class HomeScreen extends Component {
                     </TouchableOpacity>
                 </View>
                 <FlatList
-                    data={[
-                        {
-                            key: '1',
-                            noti: true,
-                            highlight: true,
-                            name: 'Vũ Văn Mạnh',
-                            type: 'Tiểu đường',
-                        },
-                        {
-                            key: '2',
-                            noti: true,
-                            highlight: true,
-                            name: 'Vũ Văn Mạnh',
-                            type: 'Tiểu đường',
-                        },
-                        {
-                            key: '3',
-                            noti: true,
-                            highlight: true,
-                            name: 'Vũ Văn Mạnh',
-                            type: 'Tiểu đường',
-                        },
-                        {
-                            key: '4',
-                            noti: false,
-                            highlight: true,
-                            name: 'Vũ Văn Mạnh',
-                            type: 'Tiểu đường',
-                        },
-                        {
-                            key: '5',
-                            noti: false,
-                            highlight: true,
-                            name: 'Vũ Văn Mạnh',
-                            type: 'Tiểu đường',
-                        },
-                        {
-                            key: '6',
-                            noti: false,
-                            highlight: false,
-                            name: 'Vũ Văn Mạnh',
-                            type: 'Tiểu đường',
-                        },
-                        {
-                            key: '7',
-                            noti: false,
-                            highlight: false,
-                            name: 'Vũ Văn Mạnh',
-                            type: 'Tiểu đường',
-                        },
-                        {
-                            key: '8',
-                            noti: false,
-                            highlight: false,
-                            name: 'Vũ Văn Mạnh',
-                            type: 'Tiểu đường',
-                        },
-                        {
-                            key: '9',
-                            noti: false,
-                            highlight: false,
-                            name: 'Vũ Văn Mạnh',
-                            type: 'Tiểu đường',
-                        },
-                        {
-                            key: '10',
-                            noti: false,
-                            highlight: false,
-                            name: 'Vũ Văn Mạnh',
-                            type: 'Tiểu đường',
-                        },
-                        {
-                            key: '11',
-                            noti: false,
-                            highlight: false,
-                            name: 'Vũ Văn Mạnh',
-                            type: 'Tiểu đường',
-                        },
-
-                    ]}
+                    data={this.state.patients}
                     renderItem={({ item }) => <CardPatient
                         noti={item.noti}
                         name={item.name}
