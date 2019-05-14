@@ -116,6 +116,7 @@ export default class HomeScreen extends Component {
                         <TextInput
                             style={{ flex: 1, padding: 5, }}
                             placeholder=''
+                            pointerEvents='none'
                             onChangeText={ (text) => this.searchPatient(text)}
                         />
                     </View>

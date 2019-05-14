@@ -17,6 +17,8 @@ import MessScreen from './screens/MessScreen';
 import NotifyScreen from './screens/NotifyScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import MedicineScreen from './screens/MedicineScreen';
+import AddAdvice from './screens/AddAdvice';
+import ChatScreen from './screens/ChatScreen';
 
 const HomeStack = createStackNavigator({
   HomeScreen: {
@@ -25,7 +27,6 @@ const HomeStack = createStackNavigator({
      header: null,
     }),
   },
-  
 });
 
 const MessStack = createStackNavigator({
@@ -78,7 +79,7 @@ const TabNavigator = createMaterialTopTabNavigator({
       return <Icon size={20} color={tintColor} name={iconName} />;
     },
     title: 'hheaea',
-    swipeEnabled: true,
+    swipeEnabled: false,
     tabBarPosition: 'bottom',
     tabBarOptions: {
       activeTintColor: 'rgba(54, 175, 160, 1)',
@@ -110,6 +111,19 @@ const TabScreen = createStackNavigator({
       headerStyle: {
         backgroundColor: 'rgba(54, 175, 160, 1)',
       },
+      headerTintColor: 'white',
+    }),
+  },
+  AddAdvice: {
+    screen: AddAdvice,
+    navigationOptions: () => ({
+      header: null,
+    }),
+  },
+  ChatScreen: {
+    screen: ChatScreen,
+    navigationOptions: () => ({
+     header: null,
     }),
   },
   MedicineScreen:  {
