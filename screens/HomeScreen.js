@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { View, ScrollView, Text, FlatList, ListView, TextInput, TouchableOpacity } from 'react-native';
+import { View, ScrollView, Text, FlatList, ListView, TextInput, TouchableOpacity, Keyboard } from 'react-native';
 import CardPatient from '../components/CardPatient';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 export default class HomeScreen extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             data: [
                 {
@@ -86,23 +85,65 @@ export default class HomeScreen extends Component {
                     name: 'Vũ Văn Mạnh',
                     type: 'Tiểu đường',
                 },],
-                patients: [],
+            patients: [],
+            focus: false,
+            textsearch: "",
         }
     }
 
+    componentDidMount() {
+        this.keyboardDidShowListener = Keyboard.addListener(
+          'keyboardDidShow',
+          this._keyboardDidShow,
+        );
+        this.keyboardDidHideListener = Keyboard.addListener(
+          'keyboardDidHide',
+          this._keyboardDidHide,
+        );
+      }
+    
+      componentWillUnmount() {
+        this.keyboardDidShowListener.remove();
+        this.keyboardDidHideListener.remove();
+      }
+    
+      _keyboardDidShow() {
+      }
+    
+      _keyboardDidHide = () => {
+        this.setState({textsearch: "", focus: false})
+      }
+    
+
     componentWillMount() {
-        this.setState({patients: [...this.state.data]})
+        this.setState({ patients: [...this.state.data] })
     }
 
-    searchPatient = (text) => {
+    searchPatient = ({text}) => {
+        this.setState({textsearch: text});
+        if (text === "") {
+            this.setState({ patients: [] });
+            return;
+        }
         let list = [...this.state.data];
-        for(let i = 0; i < list.length; i++) {
-            if(list[i].name.indexOf(text) === -1) {
+        for (let i = 0; i < list.length; i++) {
+            if (list[i].name.indexOf(text) === -1) {
                 list.splice(i, 1);
                 i = i - 1;
             }
         }
-        this.setState({ patients: list});
+        this.setState({ patients: list, textsearch: text });
+    }
+
+    onInputFocus = ({text}) => {
+        this.setState({ focus: true });
+        this.searchPatient(text);
+    }
+
+    backClick = () => {
+        let list = [...this.state.data];
+        this.setState({ focus: false, patients: list, textsearch: "" });
+        Keyboard.dismiss();
     }
 
     render() {
@@ -111,23 +152,27 @@ export default class HomeScreen extends Component {
                 <View style={{ flexDirection: 'row', marginBottom: 10, height: 60, borderBottomColor: '#EFEFEF', backgroundColor: 'rgba(54, 175, 160, 1)', alignItems: 'center' }}>
                     <View style={{ flexDirection: 'row', backgroundColor: 'white', flex: 1, borderRadius: 15, marginLeft: 5, marginRight: 5 }}>
                         <View style={{ justifyContent: 'center', paddingLeft: 10, paddingRight: 5 }}>
-                            <Icon name='search' size={20} color='gray' />
+                            { this.state.focus ? <TouchableOpacity onPress={this.backClick} >
+                                <Icon name='arrow-circle-left' size={20} color='gray' />
+                            </TouchableOpacity> : <Icon name='search' size={20} color='gray' />}
                         </View>
                         <TextInput
                             style={{ flex: 1, padding: 5, }}
                             placeholder=''
-                            pointerEvents='none'
-                            onChangeText={ (text) => this.searchPatient(text)}
+                            value={this.state.textsearch}
+                            onFocus={(text) => this.onInputFocus({text})}
+                            onChangeText={(text) => this.searchPatient({text})}
                         />
                     </View>
-                    <TouchableOpacity>
+                    {this.state.focus ? <Text></Text> : <TouchableOpacity>
                         <View style={{ paddingLeft: 10, paddingRight: 10 }}>
                             <Icon name='user-plus' size={20} color='white' />
                         </View>
-                    </TouchableOpacity>
+                    </TouchableOpacity>}
                 </View>
                 <FlatList
                     data={this.state.patients}
+                    keyboardShouldPersistTaps='always'
                     renderItem={({ item }) => <CardPatient
                         noti={item.noti}
                         name={item.name}
