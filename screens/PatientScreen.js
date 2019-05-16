@@ -46,11 +46,25 @@ export default class HomeScreen extends Component {
         }
     }
 
+    deleteAdvice = (key) => {
+        let ads = [...this.state.advices];
+        ads.splice(key, 1);
+        this.setState({ advices: ads });
+    }
+
+    addAdvice = (value) => {
+        let ads = [...this.state.advices];
+        ads.unshift(value);
+        this.setState({ advices: ads });
+    }
+
     render() {
-        listAdvice = this.state.advices.map((item) => {
-            return(<AdviceCard key={item.title}
+        listAdvice = this.state.advices.map((item, key) => {
+            return(<AdviceCard key={key}
+                    pos={key}
                     title={item.title}
                     content={item.content}
+                    deleteAdvice={this.deleteAdvice}
                 />);
         })
 
@@ -135,7 +149,8 @@ export default class HomeScreen extends Component {
                         <ButtonIcon
                             icon='phone-square'
                             label='Gọi điện'
-                            screen='MedicineScreen'
+                            screen=''
+                            phone='003030303'
                             navigation={this.props.navigation}
                         />
                     </View>
